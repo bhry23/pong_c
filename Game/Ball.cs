@@ -4,6 +4,8 @@ public class Ball
 {
     public double X { get; private set; }
     public double Y { get; private set; }
+    public double PreviousX { get; private set; }
+    public double PreviousY { get; private set; }
     private double speedX;
     private double speedY;
     private const double INITIAL_SPEED = 0.5;
@@ -16,6 +18,8 @@ public class Ball
 
     public void Update()
     {
+        PreviousX = X;
+        PreviousY = Y;
         X += speedX;
         Y += speedY;
     }
@@ -47,6 +51,8 @@ public class Ball
     {
         X = x;
         Y = y;
+        PreviousX = x;
+        PreviousY = y;
         speedX = INITIAL_SPEED * direction;
         speedY = INITIAL_SPEED * (Random.Shared.NextDouble() - 0.5);
     }
